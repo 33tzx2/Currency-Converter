@@ -7,24 +7,20 @@ import Footer from './components/Footer/Footer';
 
 function App() {
 
-  const [usd, setUSD] = useState();
-  const [eur, setEUR] = useState();
-  const [rub, setRUB] = useState();
-  const [gbp, setGBP] = useState(); 
- fetch('https://api.exchangerate-api.com/v4/latest/UAH')
+  const [currency, setCurrency] = useState({'usd':'', 'eur':'', 'rub':'', 'gbp':''});
+  fetch('https://api.exchangerate-api.com/v4/latest/UAH')
     .then(response => {return response.json()})
     .then(response => {
       // console.log(response);
-      setUSD(response.rates.USD);
-      setEUR(response.rates.EUR);
-      setRUB(response.rates.RUB);
-      setGBP(response.rates.GBP);
+      setCurrency({'usd': response.rates.USD, 'eur': response.rates.EUR, 'rub': response.rates.RUB, 'gbp': response.rates.GBP});
     })
+  
+  console.log('CURR', currency);
 
     return (
   <div className="App">
-    <Header eur={eur} usd={usd}/>
-    <Body eur={eur} usd={usd} rub={rub} gbp={gbp}></Body>
+    <Header currency={currency}/>
+    <Body currency={currency}></Body>
     <Footer/>
     </div>
   );

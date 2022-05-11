@@ -6,7 +6,8 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 
-const Header = ({usd, eur}) => {
+
+const Header = (props) => {
     
   return (
     <Navbar bg="light" expand="lg">
@@ -19,8 +20,8 @@ const Header = ({usd, eur}) => {
         style={{ maxHeight: '100px' }}
         navbarScroll
       >
-        <Nav.Link href="#action1" style={{marginLeft:'15%', color:'black'}}>UAH/USD: {(1 / usd).toFixed(2)}</Nav.Link>
-        <Nav.Link href="#action2" style={{marginLeft:'15%', color:'black'}}>UAH/EUR: {(1 / eur).toFixed(2)}</Nav.Link>
+        <Nav.Link href="#action1" style={{marginLeft:'15%', color:'black'}}>UAH/USD: {(1 / props.currency.usd).toFixed(2)}</Nav.Link>
+        <Nav.Link href="#action2" style={{marginLeft:'15%', color:'black'}}>UAH/EUR: {(1 / props.currency.eur).toFixed(2)}</Nav.Link>
       </Nav>
       <Form className="d-flex">
         <FormControl

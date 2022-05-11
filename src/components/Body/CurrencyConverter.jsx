@@ -12,13 +12,14 @@ const CurrencyConverter = () => {
   const swap = document.getElementById("swap");
   
   // function
-
+  
     function calculate() {
     // get the select options value
     const curOneVal = curEl_one.value;
     const curTwoVal = curEl_two.value;
   
     // fetch the data of selected currencyEl_one
+    
      fetch(`https://api.exchangerate-api.com/v4/latest/${curOneVal}`)
       .then((res) => res.json())
       .then((data) => {
